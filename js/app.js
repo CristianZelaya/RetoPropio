@@ -15,22 +15,20 @@ btnReiniciar.addEventListener('click', limpiarHTML);
 
 function insertarNumero() {
 
-    while ( vuelta <= 4 ) {
-
-        let numero = document.querySelector('#numero').value;
+    let numero = document.querySelector('#numero').value;
         
-        if ( numero === "" ) return validarNumero();
-        btnReiniciar.disabled = false;
+    if ( numero === "" ) return validarNumero();
+    btnReiniciar.disabled = false;
 
-        arreglo.push(numero);
-        posicion = arreglo.length - 1;
-        suma += parseInt(numero);
-        document.querySelector('#numero').value = "";
-        htmlValores += `<h3>Valor capturado: ${numero} guardado en la posición ${posicion}</h3>`;
-        divHtml.innerHTML = htmlValores;
-        vuelta ++;
-        
-    }
+    arreglo.push(numero);
+    posicion = arreglo.length - 1;
+    suma += parseInt(numero);
+    document.querySelector('#numero').value = "";
+    htmlValores += `<h3>Valor capturado: ${numero} guardado en la posición ${posicion}</h3>`;
+    divHtml.innerHTML = htmlValores;
+    vuelta ++;
+
+    if( arreglo.length <= 4 ) return;
 
     htmlSuma = `<h1>La suma es: ${suma}</h1>`;
     divSuma.innerHTML = htmlSuma;
@@ -68,6 +66,7 @@ function limpiarHTML() {
     arreglo = [];
     divSuma.innerHTML = "";
     divHtml.innerHTML = "";
+    document.querySelector('#numero').value = "";
 
     btnEnviar.disabled = false;
     btnReiniciar.disabled = true;
